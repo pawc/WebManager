@@ -4,6 +4,6 @@ import pl.pawc.workflow.model.Employee;
 
 public interface EmployeeDAO{
 	
-	public Employee getEmployee(int id);
+	public Employee getEmployee(String login);
 
 }
