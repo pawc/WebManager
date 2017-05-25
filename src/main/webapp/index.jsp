@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<form action="form" method="post">
+<form action="form.html" method="post">
 	<input type="submit" value="submit"/>
 </form>
 </body>

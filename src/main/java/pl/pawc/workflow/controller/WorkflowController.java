@@ -11,6 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class WorkflowController{ 
 	@RequestMapping("form")
     public ModelAndView printHello(HttpServletRequest request, HttpServletResponse response) {   
-		return new ModelAndView("form", "message", "hello mvc");
+		return new ModelAndView("form", "message", "test");
     }
 }
