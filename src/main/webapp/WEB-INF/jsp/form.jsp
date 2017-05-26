@@ -18,11 +18,11 @@ ${message}
 	<td><input type="text" name="lastName"></td>
     </tr>
     <tr>
-        <td>Birth Date (yyyy-mm-dd)</td>
+        <td>Birth Date</td>
 	<td><input type="date" name="birthDate" size="10"></td>
     </tr>
     <tr>
-        <td>Employed since (yyyy-mm-dd)</td>
+        <td>Employed since</td>
 	<td><input type="date" name="employedSince" size="10"></td>
     </tr>
     <tr>
