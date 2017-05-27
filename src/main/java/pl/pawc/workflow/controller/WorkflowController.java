@@ -27,7 +27,7 @@ public class WorkflowController{
 		String department = request.getParameter("department");
 		int rowsAffected = employeeJdbcTemplate.insertEmployee(firstName, lastName, birthDate, employedSince, department);
 			
-		return new ModelAndView("form", "rowsAffected", "Rows affected: "+rowsAffected);
+		return new ModelAndView("redirect:/form", "rowsAffected", "Rows affected: "+rowsAffected);
     }
 	
 	@RequestMapping("result")
