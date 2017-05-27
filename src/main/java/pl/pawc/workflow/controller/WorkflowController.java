@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import pl.pawc.workflow.dao.employee.EmployeeJDBCTemplate;
+import pl.pawc.workflow.dao.employee.EmployeeJdbcTemplate;
 import pl.pawc.workflow.model.Employee;
 
 @Controller
@@ -19,7 +19,7 @@ public class WorkflowController{
 	@RequestMapping("form")
     public ModelAndView insert(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		EmployeeJDBCTemplate employeeJdbcTemplate = (EmployeeJDBCTemplate) context.getBean("employeeJdbcTemplate");
+		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String birthDate = request.getParameter("birthDate");
@@ -33,7 +33,7 @@ public class WorkflowController{
 	@RequestMapping("result")
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		EmployeeJDBCTemplate employeeJdbcTemplate = (EmployeeJDBCTemplate) context.getBean("employeeJdbcTemplate");
+		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
 		List<Employee> result = employeeJdbcTemplate.getEmployees();
 		
 		return new ModelAndView("result", "employees", result);
