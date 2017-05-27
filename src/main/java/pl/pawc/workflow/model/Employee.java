@@ -83,6 +83,11 @@ public class Employee{
 		return isStillEmployed;
 	}
 	
+	//required or jstl tags?
+	public boolean getIsStillEmployed(){
+		return isStillEmployed;
+	}
+	
 	public void setStillEmployed(boolean isStillEmployed){
 		this.isStillEmployed = isStillEmployed;
 	}

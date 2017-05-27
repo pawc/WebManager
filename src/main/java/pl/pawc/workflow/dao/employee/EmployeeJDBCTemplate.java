@@ -1,5 +1,7 @@
 package pl.pawc.workflow.dao.employee;
 
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,9 +18,10 @@ public class EmployeeJDBCTemplate implements EmployeeDAO{
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	public Employee getEmployee(String login) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Employee> getEmployees(){
+		String SQL = "select * from employees;";
+		List<Employee> result = jdbcTemplateObject.query(SQL, new EmployeeMapper());
+		return result;
 	}
 
 	public int insertEmployee(String firstName, String lastName, String birthDate, String employedSince, String department){

@@ -5,7 +5,8 @@
 </head>
 
 <body>
-<a href="form">enter</a>
+<a href="form">insert employee</a></br>
+<a href="result.html">list employees</a>
 </body>
 
 </html>

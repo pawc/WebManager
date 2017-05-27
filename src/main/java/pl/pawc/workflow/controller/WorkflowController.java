@@ -1,5 +1,7 @@
 package pl.pawc.workflow.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.pawc.workflow.dao.employee.EmployeeJDBCTemplate;
+import pl.pawc.workflow.model.Employee;
 
 @Controller
 public class WorkflowController{ 
@@ -24,6 +27,15 @@ public class WorkflowController{
 		String department = request.getParameter("department");
 		int rowsAffected = employeeJdbcTemplate.insertEmployee(firstName, lastName, birthDate, employedSince, department);
 			
-		return new ModelAndView("form", "message", rowsAffected);
+		return new ModelAndView("form", "rowsAffected", "Rows affected: "+rowsAffected);
     }
+	
+	@RequestMapping("result")
+	public ModelAndView select(HttpServletRequest request, HttpServletResponse response){
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		EmployeeJDBCTemplate employeeJdbcTemplate = (EmployeeJDBCTemplate) context.getBean("employeeJdbcTemplate");
+		List<Employee> result = employeeJdbcTemplate.getEmployees();
+		
+		return new ModelAndView("result", "employees", result);
+	}
 }

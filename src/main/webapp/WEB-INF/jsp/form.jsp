@@ -5,7 +5,8 @@
     </script>
     <%@ page isELIgnored="false" %>
 </head>
-${message}
+<a href="index.jsp">back</a></br>
+${rowsAffected}
 <body>
 <form name="insertEmployee" method="POST" action="form.html" onsubmit="return validate(firstName.value, lastName.value, birthDate.value, employedSince.value, department.value)">
 <table cellspacing="10" cellpadding="0" border="0">
@@ -31,10 +32,10 @@ ${message}
 	<select name="department">
 	<option value="-1" selected>-</option>
 	<option value="1">FINANCIAL</option>
-	<option value="2">ACCOUNTING</option>
-	<option value="3">CS</option>
+	<option value="2">MANAGEMENT</option>
+	<option value="3">ACCOUNTING</option>
 	<option value="4">IT</option>
-	<option value="5">MANAGEMENT</option>
+	<option value="5">CS</option>
 	</select>
 	</td>
     </tr>
