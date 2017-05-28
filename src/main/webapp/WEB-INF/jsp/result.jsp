@@ -5,12 +5,11 @@
 </head>
 
 <body>
-${test}<br>
+${rowsAffected}<br>
 <a href="index.jsp">back</a></br>
-	<form type="POST" action="delete">
+	<form type="POST" action="delete.html">
 	<table border="1">
 	<tr>
-		<td>id</td>
 		<td>login</td>
 		<td>first name</td>
 		<td>last name</td>
@@ -23,7 +22,6 @@ ${test}<br>
 	</tr>
 	<c:forEach items="${employees}" var="employee">
 	<tr>
-		<td>${employee.id}</td>
 		<td>${employee.login}</td>
 		<td>${employee.firstName}</td>
 		<td>${employee.lastName}</td>
@@ -32,7 +30,7 @@ ${test}<br>
 		<td>${employee.isStillEmployed}</td>
 		<td>${employee.department}</td>
 		<td>${employee.superior}</td>
-		<td><input type="checkbox" name="delete:${employee.login}"/></td>
+		<td><input type="checkbox" name="${employee.login}"/></td>
 	</tr>
 	</c:forEach>
 	</table>

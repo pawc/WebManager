@@ -1,6 +1,8 @@
 package pl.pawc.workflow.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,7 +47,14 @@ public class WorkflowController{
 	
 	@RequestMapping("delete")
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
+		
+		Map<String, String[]> map = request.getParameterMap();
+		Set<String> selectedLogins = map.keySet();
 
-		return new ModelAndView("result", "test", "test");
+		int rowsAffected = employeeJdbcTemplate.deleteEmployees(selectedLogins);
+		
+		return new ModelAndView("redirect:/result.html", "rowsAffected", rowsAffected);
 	}
 }

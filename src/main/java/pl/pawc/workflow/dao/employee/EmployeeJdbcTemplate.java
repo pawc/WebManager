@@ -1,6 +1,7 @@
 package pl.pawc.workflow.dao.employee;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -29,6 +30,15 @@ public class EmployeeJdbcTemplate implements EmployeeDAO{
 		String SQL = "insert into employees(login, firstName, lastName, birthDate, employedSince, isStillEmployed, department, superior)"
 				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
 		int rowsAffected = jdbcTemplateObject.update(SQL, login, firstName, lastName, birthDate, employedSince, 1, department, "CEO");
+		return rowsAffected;
+	}
+
+	public int deleteEmployees(Set<String> employees){
+		String SQL = "delete from employees where login=?";
+		int rowsAffected = 0;
+		for(String login : employees){
+			rowsAffected += jdbcTemplateObject.update(SQL, login);
+		}
 		return rowsAffected;
 	}
 
