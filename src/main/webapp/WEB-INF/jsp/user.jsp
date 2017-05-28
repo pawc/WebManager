@@ -32,7 +32,7 @@
 	</tr>
 	<tr>
 		<td>still employed</td>
-		<td>${employee.isStillEmployed}</td>
+		<td>${employee.stillEmployed}</td>
 	</tr>
 	<tr>
 		<td>superior</td>

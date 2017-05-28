@@ -10,7 +10,7 @@ public class Employee{
 	private String lastName;
 	private Date birthDate;
 	private Date employedSince;
-	private boolean isStillEmployed;
+	private boolean stillEmployed;
 	private Department department;
 	private String superior;
 	
@@ -18,7 +18,7 @@ public class Employee{
 	}
 
 	public Employee(int id, String login, String firstName, String lastName, Date birthDate, Date employedSince,
-			boolean isStillEmployed, Department department, String superior){
+			boolean stillEmployed, Department department, String superior){
 		super();
 		this.id = id;
 		this.login = login;
@@ -26,7 +26,7 @@ public class Employee{
 		this.lastName = lastName;
 		this.birthDate = birthDate;
 		this.employedSince = employedSince;
-		this.isStillEmployed = isStillEmployed;
+		this.stillEmployed = stillEmployed;
 		this.department = department;
 		this.superior = superior;
 	}
@@ -80,16 +80,11 @@ public class Employee{
 	}
 	
 	public boolean isStillEmployed(){
-		return isStillEmployed;
-	}
-	
-	//required or jstl tags?
-	public boolean getIsStillEmployed(){
-		return isStillEmployed;
+		return stillEmployed;
 	}
 	
 	public void setStillEmployed(boolean isStillEmployed){
-		this.isStillEmployed = isStillEmployed;
+		this.stillEmployed = isStillEmployed;
 	}
 	
 	public Department getDepartment(){

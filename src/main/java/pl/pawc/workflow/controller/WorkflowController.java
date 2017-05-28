@@ -50,8 +50,9 @@ public class WorkflowController{
 		String lastName = request.getParameter("lastName");
 		String birthDate = request.getParameter("birthDate");
 		String employedSince = request.getParameter("employedSince");
+		String stillEmployed = request.getParameter("stillEmployed");
 		String department = request.getParameter("department");
-		int rowsAffected = employeeJdbcTemplate.editEmployee(firstName, lastName, birthDate, employedSince, department, firstName+"."+lastName);
+		int rowsAffected = employeeJdbcTemplate.editEmployee(firstName, lastName, birthDate, employedSince, stillEmployed, department, firstName+"."+lastName);
 			
 		return new ModelAndView("redirect:/result.html", "rowsAffected", "Rows affected: "+rowsAffected);
     }

@@ -27,6 +27,10 @@ ${login}
 	<td><input type="date" name="employedSince" size="10" value="${employee.employedSince}"></td>
     </tr>
     <tr>
+        <td>is still employed</td>
+	<td><input type="checkbox" name="stillEmployed" checked="${employee.stillEmployed}"></td>
+    </tr>
+    <tr>
 	<td>Department</td>
 	<td>
 	<select name="department">
