@@ -45,6 +45,16 @@ public class WorkflowController{
 		return new ModelAndView("result", "employees", result);
 	}
 	
+	@RequestMapping("user")
+	public ModelAndView show(HttpServletRequest request, HttpServletResponse response){
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
+				
+		String selectedUser = request.getParameter("login");
+		Employee employee = employeeJdbcTemplate.getEmployee(selectedUser);
+		return new ModelAndView("user", "employee", employee);
+	}
+	
 	@RequestMapping("delete")
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");

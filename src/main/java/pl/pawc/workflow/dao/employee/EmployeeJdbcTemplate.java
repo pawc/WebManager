@@ -42,4 +42,10 @@ public class EmployeeJdbcTemplate implements EmployeeDAO{
 		return rowsAffected;
 	}
 
+	public Employee getEmployee(String login) {
+		String SQL = "select * from employees where login=?";
+		Employee employee = jdbcTemplateObject.query(SQL, new Object[]{login}, new EmployeeMapper()).get(0);
+		return employee;
+	}
+
 }

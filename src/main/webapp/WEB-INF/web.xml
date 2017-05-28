@@ -47,6 +47,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+	<servlet-name>user.jsp</servlet-name>
+	<jsp-file>/WEB-INF/jsp/user.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>user.jsp</servlet-name>
+	<url-pattern>/user</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 	<servlet-name>delete</servlet-name>
 	<jsp-file>/WEB-INF/jsp/result.jsp</jsp-file>
 	</servlet>

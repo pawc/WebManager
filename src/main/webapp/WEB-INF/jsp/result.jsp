@@ -12,23 +12,15 @@
 		<td>login</td>
 		<td>first name</td>
 		<td>last name</td>
-		<td>birth date</td>
-		<td>employed since</td>
-		<td>is still employed</td>
 		<td>department</td>
-		<td>superior</td>
 		<td><input type="submit" value="delete selected"/></td>
 	</tr>
 	<c:forEach items="${employees}" var="employee">
 	<tr>
-		<td>${employee.login}</td>
+		<td><a href="user.html?login=${employee.login}">${employee.login}</a></td>
 		<td>${employee.firstName}</td>
 		<td>${employee.lastName}</td>
-		<td>${employee.birthDate}</td>
-		<td>${employee.employedSince}</td>
-		<td>${employee.isStillEmployed}</td>
 		<td>${employee.department}</td>
-		<td>${employee.superior}</td>
 		<td><input type="checkbox" name="${employee.login}"/></td>
 	</tr>
 	</c:forEach>
