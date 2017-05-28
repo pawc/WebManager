@@ -5,10 +5,9 @@
 </head>
 
 <body>
-${rowsAffected}<br>
-<a href="index.jsp">back</a></br>
+<a href="form">add</a>
 	<form type="POST" action="delete.html">
-	<table border="1">
+	<table border="1" cellspacing="0" cellpadding="10">
 	<tr>
 		<td>login</td>
 		<td>first name</td>
@@ -18,7 +17,7 @@ ${rowsAffected}<br>
 		<td>is still employed</td>
 		<td>department</td>
 		<td>superior</td>
-		<td><input type="submit" value="delete"/></td>
+		<td><input type="submit" value="delete selected"/></td>
 	</tr>
 	<c:forEach items="${employees}" var="employee">
 	<tr>

@@ -5,8 +5,7 @@
     </script>
     <%@ page isELIgnored="false" %>
 </head>
-<a href="index.jsp">back</a></br>
-${rowsAffected}
+<a href="result.html">list employees</a></br>
 <body>
 <form name="insertEmployee" method="POST" action="form.html" onsubmit="return validate(firstName.value, lastName.value, birthDate.value, employedSince.value, department.value)">
 <table cellspacing="10" cellpadding="0" border="0">
