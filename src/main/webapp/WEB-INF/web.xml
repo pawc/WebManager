@@ -56,6 +56,24 @@
 	</servlet-mapping>
 	
 	<servlet>
+	<servlet-name>edit.jsp</servlet-name>
+	<jsp-file>/WEB-INF/jsp/edit.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>edit.jsp</servlet-name>
+	<url-pattern>/edit</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>editAction</servlet-name>
+	<jsp-file>/WEB-INF/jsp/result.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>editAction</servlet-name>
+	<url-pattern>/editAction</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 	<servlet-name>delete</servlet-name>
 	<jsp-file>/WEB-INF/jsp/result.jsp</jsp-file>
 	</servlet>

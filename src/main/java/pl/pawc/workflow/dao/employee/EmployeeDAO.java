@@ -10,5 +10,6 @@ public interface EmployeeDAO{
 	public Employee getEmployee(String login);
 	public List<Employee> getEmployees();
 	public int insertEmployee(String firstName, String lastName, String birthDate, String employedSince, String department);
+	public int editEmployee(String firstName, String lastName, String birthDate, String employedSince, String department, String login);
 	public int deleteEmployees(Set<String> employees);
 }

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +29,29 @@ public class WorkflowController{
 		String employedSince = request.getParameter("employedSince");
 		String department = request.getParameter("department");
 		int rowsAffected = employeeJdbcTemplate.insertEmployee(firstName, lastName, birthDate, employedSince, department);
+			
+		return new ModelAndView("redirect:/result.html", "rowsAffected", "Rows affected: "+rowsAffected);
+    }
+	
+	@RequestMapping("edit")
+	public ModelAndView editForm(HttpServletRequest request, HttpServletResponse response){	
+		String selectedUser = request.getParameter("login");
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
+		Employee employee = employeeJdbcTemplate.getEmployee(selectedUser);
+		return new ModelAndView("edit", "employee", employee);
+	}
+	
+	@RequestMapping("editAction")
+    public ModelAndView edit(HttpServletRequest request, HttpServletResponse response){
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String birthDate = request.getParameter("birthDate");
+		String employedSince = request.getParameter("employedSince");
+		String department = request.getParameter("department");
+		int rowsAffected = employeeJdbcTemplate.editEmployee(firstName, lastName, birthDate, employedSince, department, firstName+"."+lastName);
 			
 		return new ModelAndView("redirect:/result.html", "rowsAffected", "Rows affected: "+rowsAffected);
     }

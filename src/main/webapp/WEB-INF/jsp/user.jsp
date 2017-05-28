@@ -4,7 +4,7 @@
     <%@ page isELIgnored="false" %>
 </head>
 <body>
-<a href="result.html">back</a><br>
+<a href="result.html">back</a> <a href="edit.html?login=${employee.login}"> edit</a><br>
 <table cellspacing="0" cellpadding="10" border="1">
 	<tr>
 		<td>login</td>

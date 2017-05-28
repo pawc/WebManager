@@ -32,7 +32,13 @@ public class EmployeeJdbcTemplate implements EmployeeDAO{
 		int rowsAffected = jdbcTemplateObject.update(SQL, login, firstName, lastName, birthDate, employedSince, 1, department, "CEO");
 		return rowsAffected;
 	}
-
+	
+	public int editEmployee(String firstName, String lastName, String birthDate, String employedSince, String department, String login){
+		String SQL = "update employees set firstName=?, lastName=?, birthDate=?, employedSince=?, department=? where login=?;";
+		int rowsAffected = jdbcTemplateObject.update(SQL, firstName, lastName, birthDate, employedSince, department, login);
+		return rowsAffected;
+	}
+	
 	public int deleteEmployees(Set<String> employees){
 		String SQL = "delete from employees where login=?";
 		int rowsAffected = 0;
