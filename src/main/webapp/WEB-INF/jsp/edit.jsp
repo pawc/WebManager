@@ -12,11 +12,11 @@ ${login}
 <table cellspacing="10" cellpadding="0" border="0">
     <tr>
         <td>First Name</td>
-	<td><input type="text" name="firstName" value="${employee.firstName}"></td>	
+	<td><input type="text" name="firstName" value="${employee.firstName}" disabled></td>	
     </tr>
     <tr>
         <td>Last Name</td>
-	<td><input type="text" name="lastName" value="${employee.lastName}"></td>
+	<td><input type="text" name="lastName" value="${employee.lastName}" disabled></td>
     </tr>
     <tr>
         <td>Birth Date</td>
