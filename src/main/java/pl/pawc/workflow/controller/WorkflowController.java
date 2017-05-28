@@ -30,12 +30,22 @@ public class WorkflowController{
 		return new ModelAndView("redirect:/form", "rowsAffected", "Rows affected: "+rowsAffected);
     }
 	
-	@RequestMapping("result")
-	public ModelAndView select(HttpServletRequest request, HttpServletResponse response){
+	public List<Employee> query(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
 		List<Employee> result = employeeJdbcTemplate.getEmployees();
-		
+		return result;
+	}
+	
+	@RequestMapping("result")
+	public ModelAndView select(HttpServletRequest request, HttpServletResponse response){
+		List<Employee> result = query();
 		return new ModelAndView("result", "employees", result);
+	}
+	
+	@RequestMapping("delete")
+	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
+
+		return new ModelAndView("result", "test", "test");
 	}
 }

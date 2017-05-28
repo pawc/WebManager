@@ -46,4 +46,13 @@
 	<url-pattern>/result</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+	<servlet-name>delete</servlet-name>
+	<jsp-file>/WEB-INF/jsp/result.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>delete</servlet-name>
+	<url-pattern>/delete</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
