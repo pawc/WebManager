@@ -39,11 +39,11 @@ ${login}
 	<td>
 	<select name="department">
 	<option value="-1" selected>-</option>
-	<option value="1">FINANCIAL</option>
-	<option value="2">MANAGEMENT</option>
-	<option value="3">ACCOUNTING</option>
-	<option value="4">IT</option>
-	<option value="5">CS</option>
+	<option value="FINANCIAL">FINANCIAL</option>
+	<option value="MANAGEMENT">MANAGEMENT</option>
+	<option value="ACCOUNTING">ACCOUNTING</option>
+	<option value="IT">IT</option>
+	<option value="CS">CS</option>
 	</select>
 	</td>
     </tr>

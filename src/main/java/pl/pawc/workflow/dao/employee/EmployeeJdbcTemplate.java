@@ -25,11 +25,11 @@ public class EmployeeJdbcTemplate implements EmployeeDAO{
 		return result;
 	}
 
-	public int insertEmployee(String firstName, String lastName, String birthDate, String employedSince, String department){
+	public int insertEmployee(String firstName, String lastName, String birthDate, String employedSince, String department, String superior){
 		String login = firstName.toLowerCase()+"."+lastName.toLowerCase();
 		String SQL = "insert into employees(login, firstName, lastName, birthDate, employedSince, stillEmployed, department, superior)"
 				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
-		int rowsAffected = jdbcTemplateObject.update(SQL, login, firstName, lastName, birthDate, employedSince, 1, department, "CEO");
+		int rowsAffected = jdbcTemplateObject.update(SQL, login, firstName, lastName, birthDate, employedSince, 1, department, superior);
 		return rowsAffected;
 	}
 	

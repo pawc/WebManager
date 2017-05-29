@@ -5,9 +5,9 @@
     </script>
     <%@ page isELIgnored="false" %>
 </head>
-<a href="result.html">list employees</a></br>
 <body>
-<form name="insertEmployee" method="POST" action="form.html" onsubmit="return validate(firstName.value, lastName.value, birthDate.value, employedSince.value, department.value)">
+<a href="result.html">list employees</a></br>
+<form name="insertEmployee" method="POST" action="formAction.html" onsubmit="return validate(firstName.value, lastName.value, birthDate.value, employedSince.value, department.value)">
 <table cellspacing="10" cellpadding="0" border="0">
     <tr>
         <td>First Name</td>
@@ -26,19 +26,33 @@
 	<td><input type="date" name="employedSince" size="10"></td>
     </tr>
     <tr>
-	<td>Department</td>
-	<td>
-	<select name="department">
-	<option value="-1" selected>-</option>
-	<option value="1">FINANCIAL</option>
-	<option value="2">MANAGEMENT</option>
-	<option value="3">ACCOUNTING</option>
-	<option value="4">IT</option>
-	<option value="5">CS</option>
-	</select>
-	</td>
+		<td>Department</td>
+		<td>
+		<select name="department">
+		<option value="-1" selected>-</option>
+		<option value="FINANCIAL">FINANCIAL</option>
+		<option value="MANAGEMENT">MANAGEMENT</option>
+		<option value="ACCOUNTING">ACCOUNTING</option>
+		<option value="IT">IT</option>
+		<option value="CS">CS</option>
+		</select>
+		</td>
     </tr>
-    <tr><td><input type="submit" value="Submit"></td></tr>
+    <tr>
+    	<td>Superior</td>
+    	<td>
+    		<select name="superior">
+    			<c:forEach items="${logins}" var="login">
+					<option value="${login}">${login}</option>
+				</c:forEach>
+    		</select>
+    	</td>
+    </tr>
+    <tr>
+    	<td>
+    		<input type="submit" value="Submit">
+    	</td>
+    </tr>
 </table>
 </form>
 

@@ -1,5 +1,6 @@
 package pl.pawc.workflow.controller;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -21,8 +22,31 @@ import pl.pawc.workflow.model.Employee;
 
 @Controller
 public class WorkflowController{ 
+	
+	public List<Employee> query(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
+		List<Employee> result = employeeJdbcTemplate.getEmployees();
+		return result;
+	}
+	
+	public List<String> getLogins(){
+		List<Employee> employees = query();
+		List<String> result = new ArrayList<String>();
+		for(Employee employee : employees){
+			result.add(employee.getLogin());
+		}
+		return result;
+	}
+	
 	@RequestMapping("form")
-    public ModelAndView insert(HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView form(HttpServletRequest request, HttpServletResponse response){
+		List<String> logins = getLogins();
+		return new ModelAndView("form", "logins", logins);
+    }
+	
+	@RequestMapping("formAction")
+    public ModelAndView formAction(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
 		String firstName = request.getParameter("firstName");
@@ -30,13 +54,14 @@ public class WorkflowController{
 		String birthDate = request.getParameter("birthDate");
 		String employedSince = request.getParameter("employedSince");
 		String department = request.getParameter("department");
-		int rowsAffected = employeeJdbcTemplate.insertEmployee(firstName, lastName, birthDate, employedSince, department);
+		String superior = request.getParameter("superior");
+		int rowsAffected = employeeJdbcTemplate.insertEmployee(firstName, lastName, birthDate, employedSince, department, superior);
 			
 		return new ModelAndView("redirect:/result.html", "rowsAffected", "Rows affected: "+rowsAffected);
     }
 	
 	@RequestMapping("edit")
-	public ModelAndView editForm(HttpServletRequest request, HttpServletResponse response){	
+	public ModelAndView edit(HttpServletRequest request, HttpServletResponse response){	
 		String selectedUser = request.getParameter("login");
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
@@ -45,7 +70,7 @@ public class WorkflowController{
 	}
 	
 	@RequestMapping("editAction")
-    public ModelAndView edit(HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView editAction(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
 		String firstName = request.getParameter("firstName");
@@ -65,13 +90,6 @@ public class WorkflowController{
 		else return "0";
 	}
 	
-	public List<Employee> query(){
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
-		List<Employee> result = employeeJdbcTemplate.getEmployees();
-		return result;
-	}
-	
 	@RequestMapping("result")
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response){
 		List<Employee> result = query();
@@ -79,7 +97,7 @@ public class WorkflowController{
 	}
 	
 	@RequestMapping("user")
-	public ModelAndView show(HttpServletRequest request, HttpServletResponse response){
+	public ModelAndView user(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
 				

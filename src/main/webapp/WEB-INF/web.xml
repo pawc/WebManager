@@ -65,6 +65,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+	<servlet-name>formAction</servlet-name>
+	<jsp-file>/WEB-INF/jsp/result.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>formAction</servlet-name>
+	<url-pattern>/formAction</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 	<servlet-name>editAction</servlet-name>
 	<jsp-file>/WEB-INF/jsp/result.jsp</jsp-file>
 	</servlet>

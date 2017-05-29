@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<a href="form">add</a>
+<a href="form.html">add</a>
 	<form type="POST" action="delete.html">
 	<table border="1" cellspacing="0" cellpadding="10">
 	<tr>
