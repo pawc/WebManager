@@ -27,14 +27,14 @@ public class EmployeeJdbcTemplate implements EmployeeDAO{
 
 	public int insertEmployee(String firstName, String lastName, String birthDate, String employedSince, String department){
 		String login = firstName.toLowerCase()+"."+lastName.toLowerCase();
-		String SQL = "insert into employees(login, firstName, lastName, birthDate, employedSince, isStillEmployed, department, superior)"
+		String SQL = "insert into employees(login, firstName, lastName, birthDate, employedSince, stillEmployed, department, superior)"
 				+ " values (?, ?, ?, ?, ?, ?, ?, ?)";
 		int rowsAffected = jdbcTemplateObject.update(SQL, login, firstName, lastName, birthDate, employedSince, 1, department, "CEO");
 		return rowsAffected;
 	}
 	
 	public int editEmployee(String firstName, String lastName, String birthDate, String employedSince, String stillEmployed, String department, String login){
-		String SQL = "update employees set firstName=?, lastName=?, birthDate=?, employedSince=?, isStillEmployed=?, department=? where login=?;";
+		String SQL = "update employees set firstName=?, lastName=?, birthDate=?, employedSince=?, stillEmployed=?, department=? where login=?;";
 		int rowsAffected = jdbcTemplateObject.update(SQL, firstName, lastName, birthDate, employedSince, stillEmployed, department, login);
 		return rowsAffected;
 	}

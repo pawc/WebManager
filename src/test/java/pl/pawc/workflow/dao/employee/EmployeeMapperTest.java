@@ -34,7 +34,7 @@ public class EmployeeMapperTest extends TestCase{
 			when(rs.getString("lastName")).thenReturn("Doe");
 			when(rs.getDate("birthDate")).thenReturn(new Date(200));
 			when(rs.getDate("employedSince")).thenReturn(new Date(3000));
-			when(rs.getBoolean("isStillEmployed")).thenReturn(true);
+			when(rs.getBoolean("stillEmployed")).thenReturn(true);
 			when(rs.getString("department")).thenReturn("FINANCIAL");
 			when(rs.getString("superior")).thenReturn("tomwhite");
 			

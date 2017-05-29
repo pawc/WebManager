@@ -18,7 +18,7 @@ public class EmployeeMapper implements RowMapper<Employee>{
 		employee.setLastName(rs.getString("lastName"));
 		employee.setBirthDate(rs.getDate("birthDate"));
 		employee.setEmployedSince(rs.getDate("employedSince"));
-		employee.setStillEmployed(rs.getBoolean("isStillEmployed"));
+		employee.setStillEmployed(rs.getBoolean("stillEmployed"));
 		employee.setDepartment(Department.valueOf(rs.getString("department")));
 		employee.setSuperior(rs.getString("superior"));
 		return employee;
