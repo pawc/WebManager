@@ -1,5 +1,7 @@
 package pl.pawc.workflow.controller;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -52,10 +54,16 @@ public class WorkflowController{
 		String employedSince = request.getParameter("employedSince");
 		String stillEmployed = request.getParameter("stillEmployed");
 		String department = request.getParameter("department");
-		int rowsAffected = employeeJdbcTemplate.editEmployee(firstName, lastName, birthDate, employedSince, stillEmployed, department, firstName+"."+lastName);
+		String login = firstName.toLowerCase()+"."+lastName.toLowerCase();
+		int rowsAffected = employeeJdbcTemplate.editEmployee(firstName, lastName, birthDate, employedSince, checkboxToBoolean(stillEmployed), department, login);
 			
-		return new ModelAndView("redirect:/result.html", "rowsAffected", "Rows affected: "+rowsAffected);
+		return new ModelAndView("redirect:/result.html", "rowsAffected", rowsAffected);
     }
+	
+	public String checkboxToBoolean(String state){
+		if("on".equals(state)) return "1";
+		else return "0";
+	}
 	
 	public List<Employee> query(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");

@@ -10,13 +10,17 @@
 ${login}
 <form name="editEmployee" method="POST" action="editAction.html" onsubmit="return validate(firstName.value, lastName.value, birthDate.value, employedSince.value, department.value)">
 <table cellspacing="10" cellpadding="0" border="0">
+
+	<input type="hidden" name="firstName" value="${employee.firstName}"> 
+	<input type="hidden" name="lastName" value="${employee.lastName}"> 
+	
     <tr>
         <td>First Name</td>
-	<td><input type="text" name="firstName" value="${employee.firstName}" disabled></td>	
+	<td><input type="text" name="firstNameDiabled" value="${employee.firstName}" disabled></td>	
     </tr>
     <tr>
         <td>Last Name</td>
-	<td><input type="text" name="lastName" value="${employee.lastName}" disabled></td>
+	<td><input type="text" name="lastNameDisabled" value="${employee.lastName}" disabled></td>
     </tr>
     <tr>
         <td>Birth Date</td>
