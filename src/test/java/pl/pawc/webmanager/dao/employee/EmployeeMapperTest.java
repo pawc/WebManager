@@ -1,10 +1,11 @@
-package pl.pawc.workflow.dao.employee;
+package pl.pawc.webmanager.dao.employee;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import pl.pawc.workflow.model.Department;
-import pl.pawc.workflow.model.Employee;
+import pl.pawc.webmanager.dao.employee.EmployeeMapper;
+import pl.pawc.webmanager.model.Department;
+import pl.pawc.webmanager.model.Employee;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

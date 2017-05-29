@@ -1,9 +1,9 @@
-package pl.pawc.workflow.dao.employee;
+package pl.pawc.webmanager.dao.employee;
 
 import java.util.List;
 import java.util.Set;
 
-import pl.pawc.workflow.model.Employee;
+import pl.pawc.webmanager.model.Employee;
 
 public interface EmployeeDAO{
 	

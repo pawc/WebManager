@@ -2,11 +2,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 <modelVersion>4.0.0</modelVersion>
 <groupId>pl.pawc</groupId>
-<artifactId>workflow</artifactId>
+<artifactId>webmanager</artifactId>
 <packaging>war</packaging>
 <version>0.1</version>
-<name>workflow</name>
-<url>github.com/pawc</url>
+<name>webmanager</name>
+<url>github.com/pawc/webmanager</url>
 <dependencies>
 	<dependency>
 		<groupId>junit</groupId>
@@ -142,7 +142,7 @@
 	</dependency>
 </dependencies>
   <build>
-    <finalName>workflow</finalName>
+    <finalName>webmanager</finalName>
     <plugins>
     	<plugin>
     		<groupId>org.apache.tomcat.maven</groupId>
@@ -158,7 +158,7 @@
 					<configuration>
 			 		<url>http://localhost:8080/manager/text</url> 		
 					<server>TomcatServer</server> 		
-					<path>/workflow</path> 	
+					<path>/webmanager</path> 	
 					</configuration>
     			</execution>
     		</executions>

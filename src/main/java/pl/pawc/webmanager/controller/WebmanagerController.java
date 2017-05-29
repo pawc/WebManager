@@ -1,8 +1,6 @@
-package pl.pawc.workflow.controller;
+package pl.pawc.webmanager.controller;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,11 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import pl.pawc.workflow.dao.employee.EmployeeJdbcTemplate;
-import pl.pawc.workflow.model.Employee;
+import pl.pawc.webmanager.dao.employee.EmployeeJdbcTemplate;
+import pl.pawc.webmanager.model.Employee;
 
 @Controller
-public class WorkflowController{ 
+public class WebmanagerController{ 
 	
 	public List<Employee> query(){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");

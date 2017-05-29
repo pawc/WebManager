@@ -1,4 +1,4 @@
-package pl.pawc.workflow.dao.employee;
+package pl.pawc.webmanager.dao.employee;
 
 import java.util.List;
 import java.util.Set;
@@ -7,7 +7,7 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import pl.pawc.workflow.model.Employee;
+import pl.pawc.webmanager.model.Employee;
 
 public class EmployeeJdbcTemplate implements EmployeeDAO{
 	

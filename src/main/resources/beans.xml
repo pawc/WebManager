@@ -12,7 +12,7 @@
 	    <property name = "password" value = "razdwatrzy"/>
 	</bean>
 	
-	<bean id = "employeeJdbcTemplate" class = "pl.pawc.workflow.dao.employee.EmployeeJdbcTemplate">
+	<bean id = "employeeJdbcTemplate" class = "pl.pawc.webmanager.dao.employee.EmployeeJdbcTemplate">
         <property name = "dataSource" ref = "dataSource" />    
     </bean>
 

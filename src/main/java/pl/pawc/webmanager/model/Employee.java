@@ -1,4 +1,4 @@
-package pl.pawc.workflow.model;
+package pl.pawc.webmanager.model;
 
 import java.util.Date;
 

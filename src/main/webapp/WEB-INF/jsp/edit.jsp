@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <script type="text/javascript" src="/workflow/static/js/validation.js">
+    <script type="text/javascript" src="/webmanager/static/js/validation.js">
     </script>
     <%@ page isELIgnored="false" %>
 </head>
