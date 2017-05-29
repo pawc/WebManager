@@ -66,7 +66,11 @@ public class WorkflowController{
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
 		Employee employee = employeeJdbcTemplate.getEmployee(selectedUser);
-		return new ModelAndView("edit", "employee", employee);
+		List<String> logins = getLogins();
+		Object[] parameters = new Object[2];
+		parameters[0] = employee;
+		parameters[1] = logins;
+		return new ModelAndView("edit", "parameters", parameters);
 	}
 	
 	@RequestMapping("editAction")
@@ -79,8 +83,9 @@ public class WorkflowController{
 		String employedSince = request.getParameter("employedSince");
 		String stillEmployed = request.getParameter("stillEmployed");
 		String department = request.getParameter("department");
+		String superior = request.getParameter("superior");
 		String login = firstName.toLowerCase()+"."+lastName.toLowerCase();
-		int rowsAffected = employeeJdbcTemplate.editEmployee(firstName, lastName, birthDate, employedSince, checkboxToBoolean(stillEmployed), department, login);
+		int rowsAffected = employeeJdbcTemplate.editEmployee(firstName, lastName, birthDate, employedSince, checkboxToBoolean(stillEmployed), department, superior, login);
 			
 		return new ModelAndView("redirect:/result.html", "rowsAffected", rowsAffected);
     }
