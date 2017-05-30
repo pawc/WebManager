@@ -12,7 +12,8 @@
 
 	<modules>
 		<module>webmanager</module>
-  	</modules>
+    <module>security</module>
+  </modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
