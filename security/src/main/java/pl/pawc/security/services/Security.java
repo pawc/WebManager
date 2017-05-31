@@ -7,16 +7,16 @@ import java.security.SecureRandom;
 
 import org.apache.commons.codec.binary.Base64;
 
-public class Utils {
+public class Security implements ISecurityService{
 
-    public static String generateSalt() throws NoSuchAlgorithmException{
+    public String generateSalt() throws NoSuchAlgorithmException{
         SecureRandom secureRandom = SecureRandom.getInstance("NativePNRG");
         byte[] salt = new byte[256];
         secureRandom.nextBytes(salt);
         return Base64.encodeBase64String(salt);
     }
 
-	public static String hashWithSalt(String password, String salt) throws UnsupportedEncodingException, NoSuchAlgorithmException{
+	public String hashWithSalt(String password, String salt) throws UnsupportedEncodingException, NoSuchAlgorithmException{
 	    String saltedPassString = password+salt;
 	    byte[] saltedPassBytes = saltedPassString.getBytes("UTF-8");
 	    MessageDigest messageDigest = MessageDigest.getInstance("MD5");

@@ -9,7 +9,7 @@
 <groupId>pl.pawc</groupId>
 <artifactId>webmanager</artifactId>
 <packaging>war</packaging>
-<version>0.1</version>
+<version>1.0</version>
 <name>webmanager</name>
 <url>github.com/pawc/webmanager</url>
 <dependencies>

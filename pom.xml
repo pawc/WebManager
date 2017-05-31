@@ -11,9 +11,9 @@
 	<url>github.com/pawc/WebManager</url>
 
 	<modules>
+		<module>security</module>
 		<module>webmanager</module>
-    <module>security</module>
-  </modules>
+  	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
