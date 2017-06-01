@@ -18,7 +18,7 @@ public class Password{
     private String hashedSaltedPass;
     private String salt;
  
-    public Password(String login, String pass) throws UnsupportedEncodingException, NoSuchAlgorithmException{
+    public Password(String login, String pass){
         this.login =  login;
         ISecurityService securityService = ServiceFactory.getSecurityService();
         this.salt = securityService.generateSalt();
