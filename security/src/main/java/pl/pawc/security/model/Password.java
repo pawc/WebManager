@@ -8,6 +8,8 @@ public class Password{
 	private String login;
     private String hashedSaltedPass;
     private String salt;
+    
+    public Password(){}
  
     public Password(String login, String pass){
         this.login =  login;
