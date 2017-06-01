@@ -1,16 +1,7 @@
 package pl.pawc.security.model;
 
-import java.security.MessageDigest;
-import java.security.SecureRandom;
-import java.nio.charset.StandardCharsets;
-import org.apache.commons.codec.binary.Base64;
-
 import pl.pawc.security.factory.ServiceFactory;
 import pl.pawc.security.services.ISecurityService;
-import pl.pawc.security.services.Security;
-
-import java.security.NoSuchAlgorithmException;
-import java.io.UnsupportedEncodingException;
 
 public class Password{
 	

@@ -8,11 +8,11 @@ import java.security.SecureRandom;
 import org.apache.commons.codec.binary.Base64;
 
 public class Security implements ISecurityService{
-
-    public String generateSalt(){
+	
+	public String generateSalt(){
 		try{
-	        SecureRandom secureRandom = SecureRandom.getInstance("NativePNRG");
-    	    byte[] salt = new byte[256];
+	        SecureRandom secureRandom = SecureRandom.getInstance("NativePRNG");
+    	    byte[] salt = new byte[32];
         	secureRandom.nextBytes(salt);
 	        return Base64.encodeBase64String(salt);
     	}
