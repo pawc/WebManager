@@ -15,5 +15,9 @@
 	<bean id = "employeeJdbcTemplate" class = "pl.pawc.webmanager.dao.employee.EmployeeJdbcTemplate">
         <property name = "dataSource" ref = "dataSource" />    
     </bean>
+    
+   	<bean id = "passwordJdbcTemplate" class = "pl.pawc.webmanager.dao.password.PasswordJdbcTemplate">
+        <property name = "dataSource" ref = "dataSource" />    
+    </bean>
 
 </beans>
