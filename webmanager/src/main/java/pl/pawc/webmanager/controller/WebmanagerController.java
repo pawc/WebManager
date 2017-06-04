@@ -121,4 +121,10 @@ public class WebmanagerController{
 		
 		return new ModelAndView("redirect:/result.html", "rowsAffected", rowsAffected);
 	}
+	
+	@RequestMapping("account")
+	public ModelAndView account(HttpServletRequest request, HttpServletResponse response){	
+		
+		return new ModelAndView("account", "parameter", "account");
+	}
 }

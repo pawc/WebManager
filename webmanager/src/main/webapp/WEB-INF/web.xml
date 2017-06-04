@@ -91,4 +91,13 @@
 	<url-pattern>/delete</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+	<servlet-name>account.jsp</servlet-name>
+	<jsp-file>/WEB-INF/jsp/account.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>account.jsp</servlet-name>
+	<url-pattern>/account</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

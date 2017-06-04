@@ -11,19 +11,19 @@
 <table cellspacing="10" cellpadding="0" border="0">
     <tr>
         <td>First Name</td>
-	<td><input type="text" name="firstName"></td>	
+		<td><input type="text" name="firstName"></td>	
     </tr>
     <tr>
         <td>Last Name</td>
-	<td><input type="text" name="lastName"></td>
+		<td><input type="text" name="lastName"></td>
     </tr>
     <tr>
         <td>Birth Date</td>
-	<td><input type="date" name="birthDate" size="10"></td>
+		<td><input type="date" name="birthDate" size="10"></td>
     </tr>
     <tr>
         <td>Employed since</td>
-	<td><input type="date" name="employedSince" size="10"></td>
+		<td><input type="date" name="employedSince" size="10"></td>
     </tr>
     <tr>
 		<td>Department</td>

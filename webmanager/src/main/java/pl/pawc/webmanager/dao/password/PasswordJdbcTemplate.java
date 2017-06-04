@@ -28,12 +28,12 @@ public class PasswordJdbcTemplate implements PasswordDAO{
 		return rowsUpdated;
 	}
 
-	public int updatePassword(String login) {
+	public int updatePassword(String login){
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	public int deletePassword(String login) {
+	public int deletePassword(String login){
 		// TODO Auto-generated method stub
 		return 0;
 	}
