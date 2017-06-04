@@ -15,7 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import pl.pawc.security.factory.ServiceFactory;
+import pl.pawc.security.model.Password;
+import pl.pawc.security.services.ISecurityService;
 import pl.pawc.webmanager.dao.employee.EmployeeJdbcTemplate;
+import pl.pawc.webmanager.dao.password.PasswordJdbcTemplate;
 import pl.pawc.webmanager.model.Employee;
 
 @Controller
@@ -125,6 +129,44 @@ public class WebmanagerController{
 	@RequestMapping("account")
 	public ModelAndView account(HttpServletRequest request, HttpServletResponse response){	
 		
-		return new ModelAndView("account", "parameter", "account");
+		return new ModelAndView("account", "info", "account");
 	}
+	
+	@RequestMapping("signUp")
+	public ModelAndView signUp(HttpServletRequest request, HttpServletResponse response){
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
+		
+		String login = request.getParameter("login");
+		String pass = request.getParameter("password");
+		
+		Password password = new Password(login, pass);
+		
+		int rowsAffected = passwordJdbcTemplate.insertPassword(password);
+		
+		return new ModelAndView("account", "info", "new account registered: "+login);
+	}
+	
+	@RequestMapping("signIn")
+	public ModelAndView signIn(HttpServletRequest request, HttpServletResponse response){
+		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
+		
+		String login = request.getParameter("login");
+		String pass = request.getParameter("password");
+		
+		Password password = passwordJdbcTemplate.getPassword(login);
+		String salt = password.getSalt();
+		String hashedSaltedPass = password.getHashedSaltedPass();
+		
+		ISecurityService securityService = ServiceFactory.getSecurityService();
+		String result = "false";
+		
+		String hashedSaltedPassForm = securityService.hashWithSalt(pass, salt);
+
+		if(hashedSaltedPass.equals(hashedSaltedPassForm)) result = "true";
+		
+		return new ModelAndView("account", "info", result);
+	}
+	
 }

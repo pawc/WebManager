@@ -1,12 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+	<%@ page isELIgnored="false" %>
     <script type="text/javascript" src="/webmanager/static/js/accountValidation.js">    
     </script>
-    <%@ page isELIgnored="false" %>
 </head>
 <body>
-${parameter}
+${info}
 <hr>
 
 <form name="signIn" method="POST" action="signIn.html" onsubmit="return validate(login.value, password.value)">

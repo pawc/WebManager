@@ -100,4 +100,22 @@
 	<url-pattern>/account</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+	<servlet-name>signUp</servlet-name>
+	<jsp-file>/WEB-INF/jsp/account.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>signUp</servlet-name>
+	<url-pattern>/signUp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>signIn</servlet-name>
+	<jsp-file>/WEB-INF/jsp/account.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>signIn</servlet-name>
+	<url-pattern>/signIn</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
