@@ -6,6 +6,7 @@
     </script>
 </head>
 <body>
+<a href="result.html">back</a><br>
 ${info}
 <hr>
 

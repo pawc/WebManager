@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -142,7 +142,12 @@ public class WebmanagerController{
 		
 		Password password = new Password(login, pass);
 		
-		int rowsAffected = passwordJdbcTemplate.insertPassword(password);
+		try{
+			passwordJdbcTemplate.insertPassword(password);
+		}
+		catch(DuplicateKeyException e){
+			return new ModelAndView("account", "info", "login already exists");
+		}
 		
 		return new ModelAndView("account", "info", "new account registered: "+login);
 	}
