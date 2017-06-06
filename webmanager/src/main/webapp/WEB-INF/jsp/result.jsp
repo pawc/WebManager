@@ -7,6 +7,7 @@
 <body>
 <a href="form.html">add</a> 
 <a href="account.html">account</a>
+<a href="test.html">test</a>
 	<form type="POST" action="delete.html">
 	<table border="1" cellspacing="0" cellpadding="10">
 	<tr>

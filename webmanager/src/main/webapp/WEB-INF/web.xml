@@ -118,4 +118,13 @@
 	<url-pattern>/signIn</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+	<servlet-name>test.jsp</servlet-name>
+	<jsp-file>/WEB-INF/jsp/test.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>test.jsp</servlet-name>
+	<url-pattern>/test</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

@@ -132,6 +132,12 @@ public class WebmanagerController{
 		return new ModelAndView("account", "info", "account");
 	}
 	
+	@RequestMapping("test")
+	public ModelAndView test(HttpServletRequest request, HttpServletResponse response){	
+		
+		return new ModelAndView("test", "info", "test");
+	}
+	
 	@RequestMapping("signUp")
 	public ModelAndView signUp(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -169,7 +175,10 @@ public class WebmanagerController{
 		
 		String hashedSaltedPassForm = securityService.hashWithSalt(pass, salt);
 
-		if(hashedSaltedPass.equals(hashedSaltedPassForm)) result = "true";
+		if(hashedSaltedPass.equals(hashedSaltedPassForm)){
+			result = "true";
+			request.getSession().setAttribute("login", login);
+		}
 		
 		return new ModelAndView("account", "info", result);
 	}
