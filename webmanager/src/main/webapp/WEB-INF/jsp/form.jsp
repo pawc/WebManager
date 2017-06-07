@@ -4,9 +4,10 @@
     <script type="text/javascript" src="/webmanager/static/js/validation.js">
     </script>
     <%@ page isELIgnored="false" %>
+	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/form.css">
 </head>
 <body>
-<a href="result.html">list employees</a></br>
+<b><a href="result.html">list employees</a></b></br>
 <form name="insertEmployee" method="POST" action="formAction.html" onsubmit="return validate(firstName.value, lastName.value, birthDate.value, employedSince.value, department.value)">
 <table cellspacing="10" cellpadding="0" border="0">
     <tr>

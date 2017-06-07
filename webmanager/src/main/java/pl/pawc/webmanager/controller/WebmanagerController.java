@@ -129,7 +129,7 @@ public class WebmanagerController{
 	@RequestMapping("account")
 	public ModelAndView account(HttpServletRequest request, HttpServletResponse response){	
 		
-		return new ModelAndView("account", "info", "account");
+		return new ModelAndView("account", "info", "");
 	}
 	
 	@RequestMapping("test")
@@ -165,18 +165,27 @@ public class WebmanagerController{
 		
 		String login = request.getParameter("login");
 		String pass = request.getParameter("password");
-		
-		Password password = passwordJdbcTemplate.getPassword(login);
+
+		String result = "invalid user or password";
+	
+		Password password;
+
+		try{		
+			password = passwordJdbcTemplate.getPassword(login);
+		}
+		catch(IndexOutOfBoundsException e){
+			return new ModelAndView("account", "info", result);
+		}
+
 		String salt = password.getSalt();
 		String hashedSaltedPass = password.getHashedSaltedPass();
 		
 		ISecurityService securityService = ServiceFactory.getSecurityService();
-		String result = "false";
 		
 		String hashedSaltedPassForm = securityService.hashWithSalt(pass, salt);
 
 		if(hashedSaltedPass.equals(hashedSaltedPassForm)){
-			result = "true";
+			result = "logged in as "+login;
 			request.getSession().setAttribute("login", login);
 		}
 		

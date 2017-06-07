@@ -2,9 +2,14 @@
 <html>
 <head>
     <%@ page isELIgnored="false" %>
+	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/mystyle.css">
 </head>
 <body>
-<a href="result.html">back</a> <a href="edit.html?login=${employee.login}"> edit</a><br>
+<b>
+<a href="result.html">back</a> 
+<a href="edit.html?login=${employee.login}"> edit</a>
+</b>
+<br>
 <table cellspacing="0" cellpadding="10" border="1">
 	<tr>
 		<td>login</td>

@@ -2,20 +2,23 @@
 <html>
 <head>
     <%@ page isELIgnored="false" %>
+	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/mystyle.css">
 </head>
 
 <body>
+<b>
 <a href="form.html">add</a> 
 <a href="account.html">account</a>
 <a href="test.html">test</a>
+</b>
 	<form type="POST" action="delete.html">
 	<table border="1" cellspacing="0" cellpadding="10">
 	<tr>
-		<td>login</td>
-		<td>first name</td>
-		<td>last name</td>
-		<td>department</td>
-		<td><input type="submit" value="delete selected"/></td>
+		<th>login</th>
+		<th>first name</th>
+		<th>last name</th>
+		<th>department</th>
+		<th><input type="submit" value="delete selected"/></th>
 	</tr>
 	<c:forEach items="${employees}" var="employee">
 	<tr>

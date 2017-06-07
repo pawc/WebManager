@@ -4,20 +4,21 @@
 	<%@ page isELIgnored="false" %>
     <script type="text/javascript" src="/webmanager/static/js/accountValidation.js">    
     </script>
+	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/form.css">
 </head>
 <body>
-<a href="result.html">back</a><br>
+<b><a href="result.html">back</a></b><br>
 ${info}
 <hr>
 
 <form name="signIn" method="POST" action="signIn.html" onsubmit="return validate(login.value, password.value)">
 	<table cellspacing="10" cellpadding="0" border="0">
 		<tr>
-			<td>login: </td>
+			<td>login</td>
 			<td><input type="text" name="login"/></td>
 		</tr>
 		<tr>
-			<td>password: </td>
+			<td>password</td>
 			<td><input type="password" name="password"/></td>
 		</tr>
 		<tr>
