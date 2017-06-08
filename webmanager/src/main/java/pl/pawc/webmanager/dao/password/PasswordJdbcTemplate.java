@@ -1,5 +1,7 @@
 package pl.pawc.webmanager.dao.password;
 
+import java.util.Set;
+
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -33,9 +35,13 @@ public class PasswordJdbcTemplate implements PasswordDAO{
 		return 0;
 	}
 
-	public int deletePassword(String login){
-		// TODO Auto-generated method stub
-		return 0;
+	public int deletePassword(Set<String> logins){
+		String SQL = "delete from passwords where login=?";
+		int rowsAffected = 0;
+		for(String login : logins){
+			rowsAffected += jdbcTemplateObject.update(SQL, login);
+		}
+		return rowsAffected;
 	}
 
 }

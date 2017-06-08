@@ -11,8 +11,9 @@
 	<li><a href="home.html">home</a></li>
 	<li><a href="result.html">list</a></li>
 </ul>
-<form name="insertEmployee" method="POST" action="formAction.html" onsubmit="return validate(firstName.value, lastName.value, birthDate.value, employedSince.value, department.value)">
-<table cellspacing="10" cellpadding="0" border="0">
+<p>${info}</p>
+<form name="insertEmployee" method="POST" action="formAction.html" onsubmit="return validate(firstName.value, lastName.value, password.value, birthDate.value, employedSince.value, department.value)">
+<table>
     <tr>
         <td>First Name</td>
 		<td><input type="text" name="firstName"></td>	
@@ -20,6 +21,10 @@
     <tr>
         <td>Last Name</td>
 		<td><input type="text" name="lastName"></td>
+    </tr>
+    <tr>
+    	<td>Password</td>
+    	<td><input type="password" name="password"></td>
     </tr>
     <tr>
         <td>Birth Date</td>
@@ -46,7 +51,7 @@
     	<td>Superior</td>
     	<td>
     		<select name="superior">
-    			<c:forEach items="${logins}" var="login">
+    			<c:forEach items="${parameters[0]}" var="login">
 					<option value="${login}">${login}</option>
 				</c:forEach>
     		</select>

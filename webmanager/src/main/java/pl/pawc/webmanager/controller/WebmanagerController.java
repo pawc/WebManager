@@ -44,7 +44,9 @@ public class WebmanagerController{
 	@RequestMapping("form")
     public ModelAndView form(HttpServletRequest request, HttpServletResponse response){
 		List<String> logins = getLogins();
-		return new ModelAndView("form", "logins", logins);
+		String info = request.getParameter("info");
+		Object[] parameters = {logins, info};
+		return new ModelAndView("form", "parameters", parameters);
     }
 	
 	@RequestMapping("formAction")
@@ -57,9 +59,22 @@ public class WebmanagerController{
 		String employedSince = request.getParameter("employedSince");
 		String department = request.getParameter("department");
 		String superior = request.getParameter("superior");
-		int rowsAffected = employeeJdbcTemplate.insertEmployee(firstName, lastName, birthDate, employedSince, department, superior);
-			
-		return new ModelAndView("redirect:/result.html", "rowsAffected", "Rows affected: "+rowsAffected);
+		
+		String login = firstName.toLowerCase()+"."+lastName.toLowerCase();
+		String pass = request.getParameter("password");
+		Password password = new Password(login, pass);
+		
+		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
+
+		try{
+			employeeJdbcTemplate.insertEmployee(firstName, lastName, birthDate, employedSince, department, superior);
+			passwordJdbcTemplate.insertPassword(password);
+		}
+		catch(DuplicateKeyException e){
+			return new ModelAndView("redirect:/result.html");
+		}
+		
+		return new ModelAndView("redirect:/form.html");
     }
 	
 	@RequestMapping("edit")
@@ -123,13 +138,15 @@ public class WebmanagerController{
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
+		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
 		
 		Map<String, String[]> map = request.getParameterMap();
 		Set<String> selectedLogins = map.keySet();
 
-		int rowsAffected = employeeJdbcTemplate.deleteEmployees(selectedLogins);
+		employeeJdbcTemplate.deleteEmployees(selectedLogins);
+		passwordJdbcTemplate.deletePassword(selectedLogins);
 		
-		return new ModelAndView("redirect:/result.html", "rowsAffected", rowsAffected);
+		return new ModelAndView("redirect:/result.html");
 	}
 	
 	@RequestMapping("account")

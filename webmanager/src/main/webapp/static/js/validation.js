@@ -1,10 +1,14 @@
-function validate(firstName, lastName, birthDate, employedSince, department){
+function validate(firstName, lastName, password, birthDate, employedSince, department){
     if(firstName == ""){
 	alert("First name is missing");
 	return false;
     }
     if(lastName == ""){
 	alert("Last name is missing");
+	return false;
+    }
+    if(password.length < 4){
+	alert("Password too short");
 	return false;
     }
     if(!birthDate){

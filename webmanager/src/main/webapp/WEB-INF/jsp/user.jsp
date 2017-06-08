@@ -9,13 +9,11 @@
 	</style>
 </head>
 <body>
-<b>
 <ul>
 	<li><a href="home.html">home</a></li>
 	<li><a href="result.html">list</a></li>
 	<li><a href="edit.html?login=${employee.login}">edit</a></li>
 </ul>
-</b>
 <br>
 <table cellspacing="0" cellpadding="10" border="1">
 	<tr>
