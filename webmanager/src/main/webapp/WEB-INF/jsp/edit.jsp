@@ -6,8 +6,12 @@
     <%@ page isELIgnored="false" %>
 	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/form.css">
 </head>
-<b><a href="result.html">list employees</a></b></br>
 <body>
+<ul>
+	<li><a href="home.html">home</a></li>
+	<li><a href="result.html">list</a></li>
+	<li><a href="user.html?login=${parameters[0].login}">back</a></li>
+</ul>
 <form name="editEmployee" method="POST" action="editAction.html" onsubmit="return validate(firstName.value, lastName.value, birthDate.value, employedSince.value, department.value)">
 <table cellspacing="10" cellpadding="0" border="0">
 

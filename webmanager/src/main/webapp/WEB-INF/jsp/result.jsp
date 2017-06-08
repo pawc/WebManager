@@ -2,17 +2,24 @@
 <html>
 <head>
     <%@ page isELIgnored="false" %>
-	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/mystyle.css">
+	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/form.css">
+	<style>
+		tr:hover{background-color:#f5f5f5}
+		table{width: 100%;}
+	</style>
 </head>
 
 <body>
-<b>
-<a href="form.html">add</a> 
-<a href="account.html">account</a>
-<a href="test.html">test</a>
-</b>
+
+<ul>
+	<li><a href="home.html">home</a></li>
+	<li><a href="form.html">add</a></li>
+	<li><a href="logout.html">logout</a></li>
+	<li style="float:right">${login}</li>
+</ul>
+
 	<form type="POST" action="delete.html">
-	<table border="1" cellspacing="0" cellpadding="10">
+	<table>
 	<tr>
 		<th>login</th>
 		<th>first name</th>

@@ -113,6 +113,12 @@ public class WebmanagerController{
 		return new ModelAndView("user", "employee", employee);
 	}
 	
+	@RequestMapping("home")
+	public ModelAndView home(HttpServletRequest request, HttpServletResponse response){
+		
+		return new ModelAndView("home", "info", "ok");
+	}
+	
 	@RequestMapping("delete")
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
@@ -132,10 +138,10 @@ public class WebmanagerController{
 		return new ModelAndView("account", "info", "");
 	}
 	
-	@RequestMapping("test")
+	@RequestMapping("logout")
 	public ModelAndView test(HttpServletRequest request, HttpServletResponse response){	
-		
-		return new ModelAndView("test", "info", "test");
+		request.getSession().removeAttribute("login");
+		return new ModelAndView("account", "info", "logged out");
 	}
 	
 	@RequestMapping("signUp")
@@ -189,7 +195,7 @@ public class WebmanagerController{
 			request.getSession().setAttribute("login", login);
 		}
 		
-		return new ModelAndView("account", "info", result);
+		return new ModelAndView("redirect:/home.html");
 	}
 	
 }

@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/form.css">
 </head>
 <body>
-<b><a href="result.html">back</a></b><br>
+<b>
 ${info}
 <hr>
 

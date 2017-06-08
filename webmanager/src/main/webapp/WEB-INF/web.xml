@@ -119,12 +119,21 @@
 	</servlet-mapping>
 	
 	<servlet>
-	<servlet-name>test.jsp</servlet-name>
-	<jsp-file>/WEB-INF/jsp/test.jsp</jsp-file>
+	<servlet-name>logout</servlet-name>
+	<jsp-file>/WEB-INF/jsp/account.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
-	<servlet-name>test.jsp</servlet-name>
-	<url-pattern>/test</url-pattern>
+	<servlet-name>logout</servlet-name>
+	<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>home.jsp</servlet-name>
+	<jsp-file>/WEB-INF/jsp/home.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>home.jsp</servlet-name>
+	<url-pattern>/home</url-pattern>
 	</servlet-mapping>
 	
 </web-app>

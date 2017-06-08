@@ -1,23 +1,28 @@
 body {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	color: rgb(64, 83, 255);
+	background-color: #eeeeec;
 }
 
 a:link {    
-	text-decoration: none; 
+	color: rgb(64, 83, 255);
+	text-decoration: none;
 }  
 
 a:visited {     
+	color: rgb(64, 83, 255);
 	text-decoration: none; 
 }  
 
-a:hover {     
-text-decoration: underline; 
+a:hover {
+	color: rgb(64, 83, 255);
+	text-decoration: none; 
 }
 
 table {     
 	border-collapse: collapse;     
-	width: 100%; 
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	width: 100%;
 }  
 
 th, td {
@@ -26,8 +31,6 @@ th, td {
 }  
 
 tr:nth-child(even){background-color: #f2f2f2;}
-
-tr:hover {background-color: #ddd;}
 
 th {
 	background-color: #4CAF50;
@@ -61,4 +64,30 @@ textarea {
 	background-color: #f8f8f8;     
 	font-size: 16px;     
 	resize: none; 
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #eeeeec;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #729fcf;
+    color: white;
 }

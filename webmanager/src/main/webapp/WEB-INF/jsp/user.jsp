@@ -2,12 +2,19 @@
 <html>
 <head>
     <%@ page isELIgnored="false" %>
-	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/mystyle.css">
+	<link rel="stylesheet" type="text/css" href="/webmanager/static/css/form.css">
+	<style>
+		tr:hover{background-color:#f5f5f5}
+		table{width: 100%;}
+	</style>
 </head>
 <body>
 <b>
-<a href="result.html">back</a> 
-<a href="edit.html?login=${employee.login}"> edit</a>
+<ul>
+	<li><a href="home.html">home</a></li>
+	<li><a href="result.html">list</a></li>
+	<li><a href="edit.html?login=${employee.login}">edit</a></li>
+</ul>
 </b>
 <br>
 <table cellspacing="0" cellpadding="10" border="1">
