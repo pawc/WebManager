@@ -30,7 +30,7 @@ public class WebmanagerController{
 		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
 		List<Employee> result = employeeJdbcTemplate.getEmployees();
 		return result;
-	}
+	}	
 	
 	public List<String> getLogins(){
 		List<Employee> employees = query();
@@ -49,34 +49,6 @@ public class WebmanagerController{
 		return new ModelAndView("form", "parameters", parameters);
     }
 	
-	@RequestMapping("formAction")
-    public ModelAndView formAction(HttpServletRequest request, HttpServletResponse response){
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
-		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
-		String birthDate = request.getParameter("birthDate");
-		String employedSince = request.getParameter("employedSince");
-		String department = request.getParameter("department");
-		String superior = request.getParameter("superior");
-		
-		String login = firstName.toLowerCase()+"."+lastName.toLowerCase();
-		String pass = request.getParameter("password");
-		Password password = new Password(login, pass);
-		
-		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
-
-		try{
-			employeeJdbcTemplate.insertEmployee(firstName, lastName, birthDate, employedSince, department, superior);
-			passwordJdbcTemplate.insertPassword(password);
-		}
-		catch(DuplicateKeyException e){
-			return new ModelAndView("redirect:/result.html");
-		}
-		
-		return new ModelAndView("redirect:/form.html");
-    }
-	
 	@RequestMapping("edit")
 	public ModelAndView edit(HttpServletRequest request, HttpServletResponse response){	
 		String selectedUser = request.getParameter("login");
@@ -89,29 +61,7 @@ public class WebmanagerController{
 		parameters[1] = logins;
 		return new ModelAndView("edit", "parameters", parameters);
 	}
-	
-	@RequestMapping("editAction")
-    public ModelAndView editAction(HttpServletRequest request, HttpServletResponse response){
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
-		String firstName = request.getParameter("firstName");
-		String lastName = request.getParameter("lastName");
-		String birthDate = request.getParameter("birthDate");
-		String employedSince = request.getParameter("employedSince");
-		String stillEmployed = request.getParameter("stillEmployed");
-		String department = request.getParameter("department");
-		String superior = request.getParameter("superior");
-		String login = firstName.toLowerCase()+"."+lastName.toLowerCase();
-		int rowsAffected = employeeJdbcTemplate.editEmployee(firstName, lastName, birthDate, employedSince, checkboxToBoolean(stillEmployed), department, superior, login);
-			
-		return new ModelAndView("redirect:/result.html", "rowsAffected", rowsAffected);
-    }
-	
-	public String checkboxToBoolean(String state){
-		if("on".equals(state)) return "1";
-		else return "0";
-	}
-	
+
 	@RequestMapping("result")
 	public ModelAndView result(HttpServletRequest request, HttpServletResponse response){
 		List<Employee> result = query();
@@ -134,85 +84,9 @@ public class WebmanagerController{
 		return new ModelAndView("home", "info", "ok");
 	}
 	
-	@RequestMapping("delete")
-	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response){
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
-		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
-		
-		Map<String, String[]> map = request.getParameterMap();
-		Set<String> selectedLogins = map.keySet();
-
-		employeeJdbcTemplate.deleteEmployees(selectedLogins);
-		passwordJdbcTemplate.deletePassword(selectedLogins);
-		
-		return new ModelAndView("redirect:/result.html");
-	}
-	
 	@RequestMapping("account")
 	public ModelAndView account(HttpServletRequest request, HttpServletResponse response){	
 		
 		return new ModelAndView("account", "info", "");
 	}
-	
-	@RequestMapping("logout")
-	public ModelAndView test(HttpServletRequest request, HttpServletResponse response){	
-		request.getSession().removeAttribute("login");
-		return new ModelAndView("account", "info", "logged out");
-	}
-	
-	@RequestMapping("signUp")
-	public ModelAndView signUp(HttpServletRequest request, HttpServletResponse response){
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
-		
-		String login = request.getParameter("login");
-		String pass = request.getParameter("password");
-		
-		Password password = new Password(login, pass);
-		
-		try{
-			passwordJdbcTemplate.insertPassword(password);
-		}
-		catch(DuplicateKeyException e){
-			return new ModelAndView("account", "info", "login already exists");
-		}
-		
-		return new ModelAndView("account", "info", "new account registered: "+login);
-	}
-	
-	@RequestMapping("signIn")
-	public ModelAndView signIn(HttpServletRequest request, HttpServletResponse response){
-		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
-		
-		String login = request.getParameter("login");
-		String pass = request.getParameter("password");
-
-		String result = "invalid user or password";
-	
-		Password password;
-
-		try{		
-			password = passwordJdbcTemplate.getPassword(login);
-		}
-		catch(IndexOutOfBoundsException e){
-			return new ModelAndView("account", "info", result);
-		}
-
-		String salt = password.getSalt();
-		String hashedSaltedPass = password.getHashedSaltedPass();
-		
-		ISecurityService securityService = ServiceFactory.getSecurityService();
-		
-		String hashedSaltedPassForm = securityService.hashWithSalt(pass, salt);
-
-		if(hashedSaltedPass.equals(hashedSaltedPassForm)){
-			result = "logged in as "+login;
-			request.getSession().setAttribute("login", login);
-		}
-		
-		return new ModelAndView("redirect:/home.html");
-	}
-	
 }

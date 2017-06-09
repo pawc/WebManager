@@ -18,7 +18,7 @@
 	<li style="float:right">${login}</li>
 </ul>
 
-	<form type="POST" action="delete.html">
+	<form type="POST" action="deleteAction.html">
 	<table>
 	<tr>
 		<th>login</th>
