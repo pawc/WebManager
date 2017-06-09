@@ -12,7 +12,8 @@
 	<li><a href="result.html">list</a></li>
 </ul>
 <p>${info}</p>
-<form name="insertEmployee" method="POST" action="formAction.html" onsubmit="return validate(firstName.value, lastName.value, password.value, birthDate.value, employedSince.value, department.value)">
+<form name="insertEmployee" method="POST" action="formAction.html" 
+onsubmit="return validate()">
 <table>
     <tr>
         <td>First Name</td>
@@ -24,7 +25,7 @@
     </tr>
     <tr>
     	<td>Password</td>
-    	<td><input type="password" name="password"></td>
+    	<td><input type="password" data-validation-minimum="4" name="password"></td>
     </tr>
     <tr>
         <td>Birth Date</td>
@@ -58,8 +59,8 @@
     	</td>
     </tr>
     <tr>
-    	<td>
-    		<input type="submit" value="Submit">
+    	<td colspan="2" style="text-align: center;">
+    		<input type="submit" value="Submit" style="width: 500;">
     	</td>
     </tr>
 </table>

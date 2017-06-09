@@ -22,7 +22,7 @@ public class WebmanagerInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		String requestURI = request.getRequestURI();
+		/*String requestURI = request.getRequestURI();
 		
 		if(checkIfRestrictedRequest(requestURI)){
 			if(request.getSession().getAttribute("login")!=null) return true;
@@ -31,7 +31,8 @@ public class WebmanagerInterceptor implements HandlerInterceptor{
 				return false;
 			}
 		}
-		else return true;
+		else return true;*/
+		return true;
 
 	}
 	

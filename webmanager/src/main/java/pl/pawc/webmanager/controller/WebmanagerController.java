@@ -113,7 +113,7 @@ public class WebmanagerController{
 	}
 	
 	@RequestMapping("result")
-	public ModelAndView select(HttpServletRequest request, HttpServletResponse response){
+	public ModelAndView result(HttpServletRequest request, HttpServletResponse response){
 		List<Employee> result = query();
 		return new ModelAndView("result", "employees", result);
 	}
