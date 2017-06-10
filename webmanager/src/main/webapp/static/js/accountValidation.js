@@ -1,9 +1,9 @@
 function validate(login, password){
-    if(login == ""){
+    if(login.trim() == ""){
 		alert("login is missing");
 		return false;
     }
-    if(password == ""){
+    if(password.trim() == ""){
 		alert("password is missing");
 		return false;
     }
