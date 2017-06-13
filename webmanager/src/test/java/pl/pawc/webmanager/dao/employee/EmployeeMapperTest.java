@@ -46,8 +46,8 @@ public class EmployeeMapperTest extends TestCase{
 			assertEquals("johndoe", employee.getLogin());
 			assertEquals("John", employee.getFirstName());
 			assertEquals("Doe", employee.getLastName());
-			assertEquals(new Date(200), employee.getBirthDate());
-			assertEquals(new Date(3000), employee.getEmployedSince());
+			assertEquals(new Date(200+Employee.day), employee.getBirthDate());
+			assertEquals(new Date(3000+Employee.day), employee.getEmployedSince());
 			assertTrue(employee.isStillEmployed());
 			assertEquals(Department.FINANCIAL, employee.getDepartment());				
 			assertEquals("tomwhite", employee.getSuperior());

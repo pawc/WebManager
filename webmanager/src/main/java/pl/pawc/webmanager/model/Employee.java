@@ -14,6 +14,8 @@ public class Employee{
 	private Department department;
 	private String superior;
 	
+	public static long day = 1000*60*60*24;
+	
 	public Employee(){
 	}
 
@@ -68,15 +70,15 @@ public class Employee{
 	}
 	
 	public void setBirthDate(Date birthDate){
-		this.birthDate = birthDate;
-	}
+		this.birthDate = new Date(birthDate.getTime() + day);
+	} 
 	
 	public Date getEmployedSince(){
 		return employedSince;
 	}
 	
 	public void setEmployedSince(Date employedSince){
-		this.employedSince = employedSince;
+		this.employedSince = new Date(employedSince.getTime() + day);
 	}
 	
 	public boolean isStillEmployed(){
