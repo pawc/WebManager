@@ -3,7 +3,7 @@
 
 <script type="text/javascript">
 	function Redirect(){
-		window.location="account.html"
+		window.location="signIn"
 	}
 	Redirect()
 </script>

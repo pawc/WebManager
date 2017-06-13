@@ -83,10 +83,5 @@ public class WebmanagerController{
 		
 		return new ModelAndView("home", "info", "ok");
 	}
-	
-	@RequestMapping("account")
-	public ModelAndView account(HttpServletRequest request, HttpServletResponse response){	
-		
-		return new ModelAndView("account", "info", "");
-	}
+
 }

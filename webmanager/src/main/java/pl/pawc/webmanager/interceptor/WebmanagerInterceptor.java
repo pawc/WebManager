@@ -10,8 +10,9 @@ public class WebmanagerInterceptor implements HandlerInterceptor{
 	
 	String[] unrestrictedRequests = {
 			"/webmanager/signUp.html",
+			"/webmanager/signUpAction.html",
 			"/webmanager/signIn.html",
-			"/webmanager/account.html"
+			"/webmanager/signInAction.html",
 			};
 	
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -22,7 +23,7 @@ public class WebmanagerInterceptor implements HandlerInterceptor{
 		if(checkIfRestrictedRequest(requestURI)){
 			if(request.getSession().getAttribute("login")!=null) return true;
 			else{
-				response.sendRedirect("account");
+				response.sendRedirect("signIn");
 				return false;
 			}
 		}

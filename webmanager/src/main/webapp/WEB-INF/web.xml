@@ -92,35 +92,44 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>account.jsp</servlet-name>
-		<jsp-file>/WEB-INF/jsp/account.jsp</jsp-file>
+		<servlet-name>signIn.jsp</servlet-name>
+		<jsp-file>/WEB-INF/jsp/signIn.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>account.jsp</servlet-name>
-		<url-pattern>/account</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>signUp</servlet-name>
-		<jsp-file>/WEB-INF/jsp/account.jsp</jsp-file>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>signUp</servlet-name>
-		<url-pattern>/signUp</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>signIn</servlet-name>
-		<jsp-file>/WEB-INF/jsp/account.jsp</jsp-file>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>signIn</servlet-name>
+		<servlet-name>signIn.jsp</servlet-name>
 		<url-pattern>/signIn</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>signUp.jsp</servlet-name>
+		<jsp-file>/WEB-INF/jsp/signUp.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>signUp.jsp</servlet-name>
+		<url-pattern>/signUp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>signUpAction</servlet-name>
+		<jsp-file>/WEB-INF/jsp/signUp.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>signUpAction</servlet-name>
+		<url-pattern>/signUpAction</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>signInAction</servlet-name>
+		<jsp-file>/WEB-INF/jsp/signIn.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>signInAction</servlet-name>
+		<url-pattern>/signInAction</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>logout</servlet-name>
-		<jsp-file>/WEB-INF/jsp/account.jsp</jsp-file>
+		<jsp-file>/WEB-INF/jsp/signIn.jsp</jsp-file>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>logout</servlet-name>

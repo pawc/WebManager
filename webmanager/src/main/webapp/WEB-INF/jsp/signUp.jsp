@@ -10,12 +10,13 @@
 
 <div class="login-page">
 	<div class="form">
-		<form class="login-form" ame="signIn" method="POST" action="signIn.html" onsubmit="return validate(login.value, password.value)">
+		<form class="login-form" name="signUp" method="POST" action="signUpAction.html" onsubmit="return validate(login.value, password.value)">
 			<input type="text" placeholder="username" name="login"/>
 			<input type="password" placeholder="password" name="password"/>
-			<button>login</button>
+			<button>register</button>
 			<p class="message"><b>${info}</b></p>
-		  </form>
+	  	</form>
+	  	<p class="message">Already registered? <a href="signIn">Sign in</a></p>
 	</div>
 </div>
 

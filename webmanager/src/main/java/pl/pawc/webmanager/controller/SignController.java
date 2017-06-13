@@ -18,7 +18,7 @@ import pl.pawc.webmanager.dao.password.PasswordJdbcTemplate;
 @Controller
 public class SignController {
 
-	@RequestMapping("signUp")
+	@RequestMapping("signUpAction")
 	public ModelAndView signUp(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
@@ -32,13 +32,13 @@ public class SignController {
 			passwordJdbcTemplate.insertPassword(password);
 		}
 		catch(DuplicateKeyException e){
-			return new ModelAndView("account", "info", "login already exists");
+			return new ModelAndView("signUp", "info", "login already exists");
 		}
 		
-		return new ModelAndView("account", "info", "new account registered: "+login);
+		return new ModelAndView("signIn", "info", "new account registered: "+login);
 	}
 	
-	@RequestMapping("signIn")
+	@RequestMapping("signInAction")
 	public ModelAndView signIn(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		PasswordJdbcTemplate passwordJdbcTemplate = (PasswordJdbcTemplate) context.getBean("passwordJdbcTemplate");
@@ -52,7 +52,7 @@ public class SignController {
 			password = passwordJdbcTemplate.getPassword(login);
 		}
 		catch(IndexOutOfBoundsException e){
-			return new ModelAndView("account", "info", "invalid user or password");
+			return new ModelAndView("signIn", "info", "invalid user or password");
 		}
 
 		String salt = password.getSalt();
@@ -67,14 +67,14 @@ public class SignController {
 			return new ModelAndView("redirect:/home.html");
 		}
 		else{
-			return new ModelAndView("account", "info", "invalid user or password");
+			return new ModelAndView("signIn", "info", "invalid user or password");
 		}			
 	}	
 	
 	@RequestMapping("logout")
 	public ModelAndView logout(HttpServletRequest request, HttpServletResponse response){	
 		request.getSession().removeAttribute("login");
-		return new ModelAndView("account", "info", "logged out");
+		return new ModelAndView("signIn", "info", "logged out");
 	}
 	
 }
