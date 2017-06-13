@@ -1,6 +1,6 @@
 package pl.pawc.webmanager.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Employee{
 	
