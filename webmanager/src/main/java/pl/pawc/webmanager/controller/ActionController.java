@@ -11,6 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import pl.pawc.security.model.Password;
@@ -52,6 +53,7 @@ public class ActionController {
     public ModelAndView editAction(HttpServletRequest request, HttpServletResponse response){
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
 		EmployeeJdbcTemplate employeeJdbcTemplate = (EmployeeJdbcTemplate) context.getBean("employeeJdbcTemplate");
+			
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String birthDate = request.getParameter("birthDate");
@@ -60,6 +62,9 @@ public class ActionController {
 		String department = request.getParameter("department");
 		String superior = request.getParameter("superior");
 		String login = firstName.toLowerCase()+"."+lastName.toLowerCase();
+		
+		if(!login.equals(request.getSession().getAttribute("login"))) return new ModelAndView("error", "message", "can't edit someone else's info");
+		
 		int rowsAffected = employeeJdbcTemplate.editEmployee(firstName, lastName, birthDate, employedSince, checkboxToBoolean(stillEmployed), department, superior, login);
 			
 		return new ModelAndView("redirect:/result.html", "rowsAffected", rowsAffected);

@@ -6,14 +6,15 @@ function validate(){
 	var birthDate = document.getElementsByName("birthDate")[0].value;
 	var employedSince = document.getElementsByName("employedSince")[0].value;
 	var department = document.getElementsByName("department")[0].value;
-	console.log(password);
+	console.log(department);
+	console.log(department == -1);
 	
     if(firstName == ""){
-		alert("First name is missing");
+		document.getElementById("firstName").focus();
 		return false;
     }
     if(lastName == ""){
-		alert("Last name is missing");
+    	document.getElementById("lastName").focus();
 		return false;
     }
     if(password.length < 4){
@@ -21,15 +22,15 @@ function validate(){
     	return false;
     }
     if(!birthDate){
-		alert("Birth date is missing");
+    	document.getElementById("birthDate").focus();
 		return false;
     }
     if(!employedSince){
-		alert("Employment date is missing");
+    	document.getElementById("employedSince").focus();
 		return false;
     }
     if(department == -1){
-		alert("Choose a department");
+    	document.getElementById("department").focus();
 		return false;
     }
     else{

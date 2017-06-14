@@ -20,7 +20,7 @@
 	
     <tr>
         <td>First Name</td>
-	<td><input type="text" name="firstNameDiabled" value="${parameters[0].firstName}" disabled></td>	
+	<td><input type="text" name="firstNameDisabled" value="${parameters[0].firstName}" disabled></td>	
     </tr>
     <tr>
         <td>Last Name</td>
@@ -61,7 +61,7 @@
 	</select>
 	</td>
     </tr>
-    <tr><td><input type="submit" value="Submit"></td></tr>
+    <tr><td><input type="submit" value="edit"></td></tr>
 </table>
 </form>
 

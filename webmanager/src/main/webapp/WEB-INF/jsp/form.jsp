@@ -17,23 +17,23 @@ onsubmit="return validate()">
 <table>
     <tr>
         <td>First Name</td>
-		<td><input type="text" name="firstName"></td>	
+		<td><input type="text" name="firstName" id="firstName"></td>	
     </tr>
     <tr>
         <td>Last Name</td>
-		<td><input type="text" name="lastName"></td>
+		<td><input type="text" name="lastName" id="lastName"></td>
     </tr>
     <tr>
     	<td>Password</td>
-    	<td><input type="password" data-validation-minimum="4" name="password"></td>
+    	<td><input type="password" data-validation-minimum="4" name="password" id="password"></td>
     </tr>
     <tr>
         <td>Birth Date</td>
-		<td><input type="date" name="birthDate" size="10"></td>
+		<td><input type="date" name="birthDate" size="10" id="birthDate"></td>
     </tr>
     <tr>
         <td>Employed since</td>
-		<td><input type="date" name="employedSince" size="10"></td>
+		<td><input type="date" name="employedSince" size="10" id="emplyedSince"></td>
     </tr>
     <tr>
 		<td>Department</td>
