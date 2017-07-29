@@ -11,7 +11,7 @@ public class Security implements ISecurityService{
 	
 	public String generateSalt(){
 		try{
-	        SecureRandom secureRandom = SecureRandom.getInstance("NativePRNG");
+	        SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG");
     	    byte[] salt = new byte[32];
         	secureRandom.nextBytes(salt);
 	        return Base64.encodeBase64String(salt);
